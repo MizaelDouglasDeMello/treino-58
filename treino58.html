@@ -63,6 +63,16 @@ a{color:inherit}
 .brand h1{font-size:clamp(28px,6vw,40px);font-weight:800;line-height:1.02}
 .brand .sub{color:var(--ink-2);font-size:13.5px;margin-top:4px}
 .themebtn{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:12px;color:var(--ink-2);background:var(--surface);white-space:nowrap}
+.profswitch{display:flex;gap:6px;background:var(--surface-2);border-radius:999px;padding:4px;align-self:flex-start;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.profswitch::-webkit-scrollbar{display:none}
+.profswitch .pf{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 15px 6px 6px;
+  font-size:13.5px;font-weight:600;color:var(--ink-2);white-space:nowrap;transition:.15s}
+.profswitch .pf:hover{color:var(--ink)}
+.profswitch .pf.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.profswitch .pfav{width:24px;height:24px;border-radius:999px;background:var(--line-strong);color:var(--surface);
+  display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-size:12.5px;font-weight:700}
+.profswitch .pf.on .pfav{background:var(--accent);color:var(--on-accent)}
+
 .progresscard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
 .pcrow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .bignum{font-family:"Bricolage Grotesque",sans-serif;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
@@ -302,12 +312,15 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
   <header class="top">
     <div class="brandrow">
       <div class="brand">
-        <div class="eyebrow">Plano de recomposição · 12 semanas</div>
-        <h1>Treino 58</h1>
-        <p class="sub">32 anos · 1,65 m · academia 5×/semana, 1 h por sessão · adaptado para endometriose</p>
+        <div class="eyebrow" id="brandEyebrow">Plano de recomposição · 12 semanas</div>
+        <h1 id="brandName">Treino 58</h1>
+        <p class="sub" id="brandSub"></p>
       </div>
       <button class="themebtn" id="themeBtn">Tema</button>
     </div>
+
+    <div class="profswitch" id="profSwitch" role="tablist" aria-label="Perfil"></div>
+
     <div class="progresscard">
       <div class="pcrow">
         <div>
@@ -327,9 +340,9 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
     <button role="tab" data-p="cardio" aria-selected="false">Cardio</button>
     <button role="tab" data-p="nutri" aria-selected="false">Nutrição</button>
     <button role="tab" data-p="habitos" aria-selected="false">Hábitos</button>
-    <button role="tab" data-p="ciclo" aria-selected="false">Dor e ciclo</button>
+    <button role="tab" data-p="ciclo" aria-selected="false" data-endo>Dor e ciclo</button>
     <button role="tab" data-p="progresso" aria-selected="false">Progresso</button>
-    <button role="tab" data-p="leitura" aria-selected="false">Análise</button>
+    <button role="tab" data-p="leitura" aria-selected="false" data-endo>Análise</button>
   </nav>
 
   <!-- SEMANA -->
@@ -342,11 +355,11 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
           <button class="btn" data-edit="semana">Editar</button>
         </div>
       </div>
-      <p class="lead">Cinco dias na academia permitem alternar inferiores e superiores em dias seguidos: cada grupo descansa 48 h enquanto o outro trabalha. Pernas e glúteos aparecem 3× na semana, porque é ali que mora a maior parte do seu gasto calórico e da mudança de forma.</p>
+      <p class="lead" data-endo>Cinco dias na academia permitem alternar inferiores e superiores em dias seguidos: cada grupo descansa 48 h enquanto o outro trabalha. Pernas e glúteos aparecem 3× na semana, porque é ali que mora a maior parte do seu gasto calórico e da mudança de forma.</p>
       <div id="weekWrap"></div>
     </div>
 
-    <div class="card">
+    <div class="card" data-endo>
       <div class="rules">
         <h3>Regras fixas — endometriose</h3>
         <ul>
@@ -360,7 +373,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
       </div>
     </div>
 
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <div class="whead"><h2>A hora, minuto a minuto</h2><span class="tag ghost">60 min</span></div>
       <p class="lead">Uma hora é suficiente — desde que você não a gaste no celular entre as séries.</p>
       <div>
@@ -373,7 +386,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
       <p class="footnote">Como o cardio ficou curto, os <b>8 a 10 mil passos diários</b> deixam de ser bônus e passam a ser parte do plano.</p>
     </div>
 
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <div class="whead"><h2>Suas 3 primeiras semanas</h2><span class="tag">Iniciante</span></div>
       <ul class="bullets">
         <li><b>Semanas 1 e 2: carga de aprendizado.</b> Um peso que você faria mais 5 repetições além do alvo. A meta é decorar o movimento.</li>
@@ -415,11 +428,11 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
         <h2>Cardio</h2>
         <div class="btnrow"><span class="tag cardio">Baixo impacto</span><button class="btn" data-edit="cardio">Editar</button></div>
       </div>
-      <p class="lead">O cardio aqui gasta caloria sem roubar recuperação do treino de força e sem sacudir a pelve: constante, moderado, sem impacto.</p>
+      <p class="lead" data-endo>O cardio aqui gasta caloria sem roubar recuperação do treino de força e sem sacudir a pelve: constante, moderado, sem impacto.</p>
       <div class="hr"></div>
       <div id="cardioList"></div>
     </div>
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <h3>Como saber se a intensidade está certa</h3>
       <ul class="bullets">
         <li><b>Zona 2 (60-70 % da FC máxima ≈ 113-132 bpm):</b> você fala frases inteiras, mas não cantaria.</li>
@@ -434,16 +447,16 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
   <section class="panel" id="p-nutri" hidden>
     <div class="card stack">
       <div class="whead"><h2>Números de referência</h2><button class="btn" data-edit="nutri">Editar</button></div>
-      <p class="lead">Estimativa por Mifflin-St Jeor com fator de atividade moderado. É ponto de partida: quem manda é a balança ao longo de 3 semanas.</p>
+      <p class="lead" data-endo>Estimativa por Mifflin-St Jeor com fator de atividade moderado. É ponto de partida: quem manda é a balança ao longo de 3 semanas.</p>
       <div id="targets"></div>
       <div class="hr"></div>
-      <p class="footnote">6 kg nesse ritmo levam de 12 a 15 semanas. Descer mais rápido custa massa muscular — e é ela que segura seu gasto de base lá em cima depois.</p>
+      <p class="footnote" data-endo>6 kg nesse ritmo levam de 12 a 15 semanas. Descer mais rápido custa massa muscular — e é ela que segura seu gasto de base lá em cima depois.</p>
     </div>
     <div class="card stack">
       <div class="whead"><h3>Divisão do dia</h3><span class="wprog">editável junto com os números</span></div>
       <div id="meals"></div>
     </div>
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <h3>Saciedade e endometriose</h3>
       <ul class="bullets">
         <li><b>Proteína em toda refeição.</b> 30 g por refeição é o alvo prático: segura a fome e protege o músculo.</li>
@@ -466,7 +479,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
       </div>
       <div id="habits"></div>
     </div>
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <h3>Por que esses e não outros</h3>
       <ul class="bullets">
         <li><b>Sono de 7 a 9 h</b> é o item de maior retorno. Dormir mal eleva a fome, derruba a força e reduz o limiar de dor.</li>
@@ -478,7 +491,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
   </section>
 
   <!-- CICLO -->
-  <section class="panel" id="p-ciclo" hidden>
+  <section class="panel" id="p-ciclo" hidden data-endo>
     <div class="card stack">
       <div class="whead">
         <h2>Registro do dia</h2>
@@ -525,7 +538,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
   <section class="panel" id="p-progresso" hidden>
     <div class="card stack">
       <div class="whead"><h2>Registro de peso</h2><span class="savestate" id="saveState">salvo neste aparelho</span></div>
-      <p class="lead">Pese-se 2× por semana, em jejum, depois do banheiro, mesma roupa. Compare médias de semana com semana — nunca dia com dia.</p>
+      <p class="lead" data-endo>Pese-se 2× por semana, em jejum, depois do banheiro, mesma roupa. Compare médias de semana com semana — nunca dia com dia.</p>
       <div class="logform">
         <input id="wIn" type="number" step="0.1" min="35" max="200" placeholder="64.0" aria-label="Peso em quilos" inputmode="decimal">
         <input id="dIn" type="date" aria-label="Data" style="width:auto">
@@ -552,7 +565,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
       <div id="goals"></div>
     </div>
 
-    <div class="card stack">
+    <div class="card stack" data-endo>
       <h3>Além da balança</h3>
       <ul class="bullets">
         <li><b>Meça cintura e quadril</b> a cada 15 dias, em jejum. Em recomposição, a fita mexe quando a balança trava.</li>
@@ -563,7 +576,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
   </section>
 
   <!-- ANÁLISE -->
-  <section class="panel" id="p-leitura" hidden>
+  <section class="panel" id="p-leitura" hidden data-endo>
     <div class="card stack">
       <h2>Análise atual</h2>
       <dl class="kv">
@@ -744,9 +757,34 @@ var DEFAULT = {
   ]
 };
 
+/* ================= plano em branco (perfil novo) ================= */
+var BLANK = {
+  planV:2, startW:0, goalW:0, height:0,
+  workouts:[{ id:"A", nome:"Treino A", foco:"Defina o foco deste treino", dur:"", ex:[
+    {n:"Primeiro exercício", s:3, r:"10-12", d:60, obs:"Toque em Editar para montar seu treino.", alt:[]}
+  ]}],
+  week:[
+    {d:"Segunda", t:"A definir", n:"", k:"w", w:""},
+    {d:"Terça",   t:"A definir", n:"", k:"w", w:""},
+    {d:"Quarta",  t:"A definir", n:"", k:"w", w:""},
+    {d:"Quinta",  t:"A definir", n:"", k:"w", w:""},
+    {d:"Sexta",   t:"A definir", n:"", k:"w", w:""},
+    {d:"Sábado",  t:"A definir", n:"", k:"r", w:""},
+    {d:"Domingo", t:"Descanso",  n:"", k:"r", w:""}
+  ],
+  cardio:[], targets:[], meals:[],
+  habits:[
+    {t:"Dormir 7 a 9 horas", s:"O item de maior retorno de qualquer plano."},
+    {t:"Beber água suficiente", s:"35 ml por kg de peso é a referência."},
+    {t:"Bater a meta de proteína", s:"Defina a sua na aba Nutrição."},
+    {t:"8.000 a 10.000 passos", s:"Conta o dia inteiro, não só o treino."},
+    {t:"Anotar carga de cada exercício", s:"Sem registro não há como saber se progrediu."}
+  ]
+};
+
 /* ================= estado ================= */
 var todayKey = new Date().toISOString().slice(0,10);
-var state = null, db = null, saveTimer = null, saving = false, dirty = false;
+var root = null, state = null, db = null, saveTimer = null, saving = false, dirty = false;
 var editing = {semana:false, treino:false, cardio:false, nutri:false, habitos:false, metas:false};
 
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
@@ -771,22 +809,55 @@ function ensureUids(plan){
   });
 }
 
-function normalize(s){
+/* ---- perfis ---- */
+function newProfile(nome, tipo, sub, seed){
+  return { nome:nome, tipo:tipo, sub:sub, plan:clone(seed), sets:{}, habits:{}, done:{},
+           loads:{}, cycle:{}, log:[], workout:seed.workouts[0].id, day:todayKey };
+}
+function normalizeRoot(r){
+  // formato antigo: um único perfil na raiz -> vira o perfil da Caroline
+  if(r && (r.plan || r.log) && !r.profiles){
+    var old = r;
+    r = { active:"carol", profiles:{
+      carol: { nome:"Caroline", tipo:"endo",
+               sub:"32 anos · 1,65 m · academia 5×/semana, 1 h por sessão · adaptado para endometriose",
+               plan:old.plan, sets:old.sets, habits:old.habits, done:old.done,
+               loads:old.loads, cycle:old.cycle, log:old.log, workout:old.workout, day:old.day }
+    }};
+  }
+  if(!r || typeof r!=="object") r = {};
+  if(!r.profiles || typeof r.profiles!=="object") r.profiles = {};
+  if(!r.profiles.carol){
+    r.profiles.carol = newProfile("Caroline","endo",
+      "32 anos · 1,65 m · academia 5×/semana, 1 h por sessão · adaptado para endometriose", DEFAULT);
+  }
+  if(!r.profiles.mizael){
+    r.profiles.mizael = newProfile("Mizael","padrao","Perfil novo — monte seus treinos na aba Treinos", BLANK);
+  }
+  if(!r.profiles[r.active]) r.active = "carol";
+  Object.keys(r.profiles).forEach(function(k){ normalize(r.profiles[k], k==="carol"); });
+  root = r;
+  state = r.profiles[r.active];
+  return r;
+}
+
+function normalize(s, isCarol){
   if(!s || typeof s!=="object") s = {};
-  if(!s.plan || !s.plan.workouts || !s.plan.workouts.length) s.plan = clone(DEFAULT);
+  var seed = isCarol ? DEFAULT : BLANK;
+  if(!s.plan || !s.plan.workouts || !s.plan.workouts.length) s.plan = clone(seed);
   ["week","cardio","targets","meals","habits"].forEach(function(k){
-    if(!Array.isArray(s.plan[k]) || !s.plan[k].length) s.plan[k] = clone(DEFAULT[k]);
+    if(!Array.isArray(s.plan[k])) s.plan[k] = clone(seed[k]);
   });
-  // atualização de versão do plano: troca a lista de exercícios pela nova,
+  // atualização de versão do plano da Caroline: troca a lista de exercícios pela nova,
   // preservando peso, metas, cargas (uid é derivado do nome), ciclo e histórico
-  if(s.plan.planV !== DEFAULT.planV){
+  if(isCarol && s.plan.planV !== DEFAULT.planV){
     s.plan.workouts = clone(DEFAULT.workouts);
     s.plan.planV = DEFAULT.planV;
   }
   s.plan.workouts.forEach(function(w){ w.ex.forEach(function(e){ if(!Array.isArray(e.alt)) e.alt=[]; }); });
-  if(typeof s.plan.startW!=="number") s.plan.startW = DEFAULT.startW;
-  if(typeof s.plan.goalW!=="number") s.plan.goalW = DEFAULT.goalW;
-  s.plan.height = DEFAULT.height;
+  if(typeof s.plan.startW!=="number") s.plan.startW = seed.startW;
+  if(typeof s.plan.goalW!=="number") s.plan.goalW = seed.goalW;
+  if(typeof s.plan.height!=="number") s.plan.height = seed.height;
   if(s.day!==todayKey){ s.sets={}; s.habits={}; s.day=todayKey; }
   if(!s.sets) s.sets={};
   if(!s.habits) s.habits={};
@@ -807,18 +878,18 @@ function normalize(s){
     if(!Array.isArray(s.loads[u]) || !s.loads[u].length){ delete s.loads[u]; return; }
     s.loads[u] = s.loads[u].sort(function(a,b){return a.d<b.d?-1:1}).slice(-40);
   });
-  if(!Array.isArray(s.log) || !s.log.length) s.log=[{d:todayKey, w:s.plan.startW}];
+  if(!Array.isArray(s.log)) s.log = [];
   if(!s.workout) s.workout = s.plan.workouts[0].id;
   if(!s.plan.workouts.some(function(w){return w.id===s.workout})) s.workout = s.plan.workouts[0].id;
   // poda histórico antigo (mantém ~6 meses)
   var cut = new Date(Date.now()-190*864e5).toISOString().slice(0,10);
   Object.keys(s.done).forEach(function(d){ if(d<cut) delete s.done[d]; });
-  state = s;
+  return s;
 }
 
 function save(){
-  state.savedAt = new Date().toISOString();
-  lsSet(state);
+  root.savedAt = new Date().toISOString();
+  lsSet(root);
   if(saveTimer) clearTimeout(saveTimer);
   saveTimer = setTimeout(pushDb, 700);
 }
@@ -826,7 +897,7 @@ function pushDb(){
   if(!db) return;
   if(saving){ dirty=true; return; }
   saving = true; setSave("salvando…");
-  db.doc("app/state").set(clone(state)).then(function(){
+  db.doc("app/state").set(clone(root)).then(function(){
     saving=false; setSave("salvo na nuvem");
     if(dirty){ dirty=false; pushDb(); }
   }).catch(function(){ saving=false; setSave("salvo neste aparelho"); });
@@ -844,7 +915,7 @@ function setPath(path, val){
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function fmt(n){ return Number(n).toFixed(1).replace(".",","); }
 function br(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]; }
-function latest(){ var l=state.log.slice().sort(function(a,b){return a.d<b.d?-1:1}); return l[l.length-1]; }
+function latest(){ var l=state.log.slice().sort(function(a,b){return a.d<b.d?-1:1}); return l.length?l[l.length-1]:null; }
 function ytLink(q, label){
   var u = "https://www.youtube.com/results?search_query="+encodeURIComponent(q+" execução correta academia");
   return '<a class="yt" href="'+u+'" target="_blank" rel="noopener noreferrer" title="Ver no YouTube como executar">'+
@@ -920,20 +991,36 @@ function weekDates(){
 }
 
 /* ================= cabeçalho ================= */
+function imc(kg, h){ return (h>0 && kg>0) ? (kg/(h*h)).toFixed(1).replace(".",",") : "—"; }
+
 function renderHeader(){
-  var p = state.plan, cur = latest().w;
-  document.getElementById("curW").innerHTML = fmt(cur)+'<small>kg</small>';
-  var total = p.startW - p.goalW;
-  var pct = total>0 ? Math.max(0, Math.min(100, (p.startW-cur)/total*100)) : 0;
+  var p = state.plan, last = latest(), cur = last ? last.w : null;
+  var defined = p.startW>0 && p.goalW>0;
+
+  document.getElementById("curW").innerHTML = cur===null
+    ? '<span style="font-size:19px;font-weight:600;color:var(--ink-3)">sem registro</span>'
+    : fmt(cur)+'<small>kg</small>';
+
+  var total = defined ? p.startW-p.goalW : 0;
+  var pct = (total>0 && cur!==null) ? Math.max(0, Math.min(100, (p.startW-cur)/total*100)) : 0;
   document.getElementById("bar").style.width = pct.toFixed(1)+"%";
-  var falta = cur - p.goalW;
-  document.getElementById("pcMeta").innerHTML =
-    (falta<=0 ? "<b>Meta alcançada.</b>" : "Faltam <b>"+fmt(falta)+" kg</b> · "+pct.toFixed(0)+"% do caminho")+
-    '<br><span class="mono">IMC '+(cur/(p.height*p.height)).toFixed(1).replace(".",",")+'</span>';
-  document.getElementById("tStart").textContent = fmt(p.startW)+" kg · início";
-  document.getElementById("tGoal").textContent = fmt(p.goalW)+" kg · meta";
-  document.getElementById("imcNow").textContent = (cur/(p.height*p.height)).toFixed(1).replace(".",",");
-  document.getElementById("imcGoal").textContent = (p.goalW/(p.height*p.height)).toFixed(1).replace(".",",");
+
+  var meta = document.getElementById("pcMeta");
+  if(!defined){
+    meta.innerHTML = 'Defina peso inicial, meta e altura<br><span class="mono">aba Progresso · Metas de peso</span>';
+  } else if(cur===null){
+    meta.innerHTML = 'Meta de <b>'+fmt(p.goalW)+' kg</b><br><span class="mono">registre seu peso na aba Progresso</span>';
+  } else {
+    var falta = cur-p.goalW;
+    meta.innerHTML = (falta<=0 ? "<b>Meta alcançada.</b>" : "Faltam <b>"+fmt(falta)+" kg</b> · "+pct.toFixed(0)+"% do caminho")+
+      '<br><span class="mono">IMC '+imc(cur, p.height)+'</span>';
+  }
+  document.getElementById("tStart").textContent = defined ? fmt(p.startW)+" kg · início" : "—";
+  document.getElementById("tGoal").textContent  = defined ? fmt(p.goalW)+" kg · meta" : "—";
+
+  var a=document.getElementById("imcNow"), b=document.getElementById("imcGoal");
+  if(a) a.textContent = cur===null ? "—" : imc(cur, p.height);
+  if(b) b.textContent = imc(p.goalW, p.height);
 }
 
 /* ================= semana ================= */
@@ -1127,19 +1214,29 @@ function renderHabits(){
 function renderGoals(){
   var p = state.plan, host = document.getElementById("goals");
   if(editing.metas){
-    host.innerHTML = '<div class="egrid"><label>Peso inicial (kg)<input class="f num" type="number" step="0.1" data-bind="startW" value="'+p.startW+'"></label>'+
-      '<label>Peso meta (kg)<input class="f num" type="number" step="0.1" data-bind="goalW" value="'+p.goalW+'"></label></div>'+
+    host.innerHTML = '<div class="egrid">'+
+      '<label>Peso inicial (kg)<input class="f num" type="number" step="0.1" min="0" data-bind="startW" value="'+p.startW+'"></label>'+
+      '<label>Peso meta (kg)<input class="f num" type="number" step="0.1" min="0" data-bind="goalW" value="'+p.goalW+'"></label>'+
+      '<label>Altura (m)<input class="f num" type="number" step="0.01" min="0" max="2.5" data-bind="height" value="'+p.height+'"></label></div>'+
       '<div class="btnrow" style="margin-top:12px"><button class="btn prim" data-edit="metas">Concluir edição</button></div>';
     return;
   }
-  host.innerHTML = '<dl class="kv"><dt>Peso inicial</dt><dd>'+fmt(p.startW)+' kg</dd>'+
-    '<dt>Peso meta</dt><dd>'+fmt(p.goalW)+' kg</dd>'+
-    '<dt>Diferença</dt><dd>'+fmt(p.startW-p.goalW)+' kg</dd></dl>';
+  var def = p.startW>0 && p.goalW>0;
+  host.innerHTML = '<dl class="kv"><dt>Peso inicial</dt><dd>'+(p.startW>0?fmt(p.startW)+" kg":"—")+'</dd>'+
+    '<dt>Peso meta</dt><dd>'+(p.goalW>0?fmt(p.goalW)+" kg":"—")+'</dd>'+
+    '<dt>Altura</dt><dd>'+(p.height>0?String(p.height).replace(".",",")+" m":"—")+'</dd>'+
+    '<dt>Diferença</dt><dd>'+(def?fmt(p.startW-p.goalW)+" kg":"—")+'</dd></dl>'+
+    (def?"":'<p class="footnote">Toque em <b>Editar</b> para definir. Sem esses números a barra do topo e o IMC ficam vazios.</p>');
 }
 
 function renderChart(){
   var log = state.log.slice().sort(function(a,b){return a.d<b.d?-1:1});
   var p = state.plan, W=760, H=190, P={t:18,r:56,b:26,l:12};
+  if(!log.length){
+    document.getElementById("chart").innerHTML =
+      '<p class="lead" style="padding:18px 0">Sem registros ainda. Digite seu peso acima e toque em <b>Registrar</b> — o gráfico aparece a partir do primeiro registro.</p>';
+    return;
+  }
   var lo=Math.min(p.goalW, log[0].w)-0.8, hi=Math.max(p.startW, log[0].w)+0.8;
   log.forEach(function(x){ if(x.w<lo) lo=x.w-0.8; if(x.w>hi) hi=x.w+0.8; });
   var n = Math.max(log.length,2);
@@ -1384,6 +1481,30 @@ function paintTimer(){
 function stopTimer(){ if(tHandle) clearInterval(tHandle); tHandle=null; document.getElementById("timerBar").classList.remove("on"); }
 
 /* ================= render geral ================= */
+/* ---- perfil ativo ---- */
+function renderProfSwitch(){
+  var ks = Object.keys(root.profiles);
+  document.getElementById("profSwitch").innerHTML = ks.map(function(k){
+    var p = root.profiles[k], on = root.active===k;
+    var ini = (p.nome||"?").trim().charAt(0).toUpperCase();
+    return '<button class="pf'+(on?" on":"")+'" data-prof="'+esc(k)+'" role="tab" aria-selected="'+on+'">'+
+      '<span class="pfav">'+esc(ini)+'</span>'+esc(p.nome)+'</button>';
+  }).join("");
+}
+function applyProfile(){
+  state = root.profiles[root.active];
+  var endo = state.tipo==="endo";
+  document.getElementById("brandName").textContent = endo ? "Treino 58" : "Treino de "+state.nome;
+  document.getElementById("brandEyebrow").textContent = endo ? "Plano de recomposição · 12 semanas" : "Plano pessoal";
+  document.getElementById("brandSub").textContent = state.sub || "";
+  [].forEach.call(document.querySelectorAll("[data-endo]"), function(el){ el.hidden = !endo; });
+  // se a aba aberta pertence só ao perfil da Caroline, volta para Semana
+  var sel = document.querySelector('#tabs button[aria-selected="true"]');
+  if(sel && sel.hidden) document.querySelector('#tabs button[data-p="semana"]').click();
+  renderProfSwitch();
+  renderAll();
+}
+
 function renderAll(){
   renderHeader(); renderWeek(); renderSelector(); renderWorkout();
   renderCardio(); renderNutri(); renderHabits(); renderGoals();
@@ -1391,6 +1512,17 @@ function renderAll(){
 }
 
 /* ================= eventos ================= */
+document.getElementById("profSwitch").addEventListener("click", function(e){
+  var b = e.target.closest("button[data-prof]"); if(!b) return;
+  if(root.active===b.dataset.prof) return;
+  root.active = b.dataset.prof;
+  Object.keys(editing).forEach(function(k){ editing[k]=false; });
+  openHist = {}; openAlt = {}; cycDate = todayKey;
+  document.getElementById("cycDate").value = todayKey;
+  save(); applyProfile();
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
 document.getElementById("tabs").addEventListener("click", function(e){
   var b=e.target.closest("button[data-p]"); if(!b) return;
   [].forEach.call(this.querySelectorAll("button"), function(x){ x.setAttribute("aria-selected", x===b?"true":"false"); });
@@ -1430,7 +1562,7 @@ document.addEventListener("input", function(e){
   if(el.type==="number"){ v = parseFloat(v); if(isNaN(v)) return; if(path.indexOf(".s")>0||path.indexOf(".d")>0) v = Math.round(v); }
   setPath(path, v);
   save();
-  if(path==="startW"||path==="goalW"){ renderHeader(); renderChart(); }
+  if(path==="startW"||path==="goalW"||path==="height"){ renderHeader(); renderChart(); }
 });
 
 /* ações estruturais */
@@ -1574,10 +1706,10 @@ document.getElementById("themeBtn").addEventListener("click", function(){
 });
 
 /* ================= boot ================= */
-normalize(lsGet());
+normalizeRoot(lsGet());
 document.getElementById("dIn").value = todayKey;
 document.getElementById("cycDate").value = todayKey;
-renderAll();
+applyProfile();
 
 if(window.claude && typeof window.claude.use==="function"){
   window.claude.use("db").then(function(d){
@@ -1587,9 +1719,9 @@ if(window.claude && typeof window.claude.use==="function"){
       if(snap.exists){
         var remote = snap.data();
         var localDay = (lsGet()||{}).savedAt || "";
-        if(!remote.savedAt || !localDay || remote.savedAt >= localDay){ normalize(remote); renderAll(); }
+        if(!remote.savedAt || !localDay || remote.savedAt >= localDay){ normalizeRoot(remote); applyProfile(); }
         setSave("salvo na nuvem");
-      } else { setSave("salvo na nuvem"); state.savedAt=new Date().toISOString(); pushDb(); }
+      } else { setSave("salvo na nuvem"); root.savedAt=new Date().toISOString(); pushDb(); }
     });
   }).catch(function(){ setSave("salvo neste aparelho"); });
 }

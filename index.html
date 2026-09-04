@@ -7,8 +7,8 @@
   <meta name="description" content="Plano de treino, cardio, nutrição, hábitos e registro de dor e ciclo — 12 semanas, adaptado para endometriose.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#0F5C4E" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0E1513" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#8A3D74" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161015" media="(prefers-color-scheme: dark)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Treino 58">
   <meta name="mobile-web-app-capable" content="yes">
@@ -28,44 +28,44 @@
 <body>
 <style>
 :root{
-  --ground:#F1F3F2;
+  --ground:#FAF5F7;
   --surface:#FFFFFF;
-  --surface-2:#E7EBE9;
-  --ink:#12201C;
-  --ink-2:#4A5A55;
-  --ink-3:#7C8B86;
-  --line:#D3DAD7;
-  --line-strong:#B6C1BD;
-  --accent:#0F5C4E;
-  --accent-soft:#DCEAE5;
-  --accent-ink:#0B463B;
-  --on-accent:#F1F3F2;
-  --calm:#A8496A;
-  --calm-soft:#F5E1E7;
-  --cardio:#9A6410;
-  --cardio-soft:#F6E9D4;
-  --shadow:0 1px 2px rgba(18,32,28,.06), 0 8px 24px -16px rgba(18,32,28,.35);
+  --surface-2:#F0E6EC;
+  --ink:#2A1B26;
+  --ink-2:#5E4B58;
+  --ink-3:#93808C;
+  --line:#E4D5DE;
+  --line-strong:#CCB4C2;
+  --accent:#8A3D74;
+  --accent-soft:#F6E5F0;
+  --accent-ink:#6B2B59;
+  --on-accent:#FFF8FC;
+  --calm:#C0465F;
+  --calm-soft:#FBE3E6;
+  --cardio:#A76A21;
+  --cardio-soft:#F9EBD8;
+  --shadow:0 1px 2px rgba(42,27,38,.05), 0 10px 26px -18px rgba(42,27,38,.4);
   --radius:14px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ground:#0E1513; --surface:#161F1C; --surface-2:#1F2A26;
-    --ink:#E8EFEC; --ink-2:#A9B8B3; --ink-3:#7C8B86;
-    --line:#2A3733; --line-strong:#3A4A45;
-    --accent:#5FCBB0; --accent-soft:#12332C; --accent-ink:#8FE0CA; --on-accent:#0B1613;
-    --calm:#E093AB; --calm-soft:#331E26;
-    --cardio:#E0AC5E; --cardio-soft:#33270F;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    --ground:#161015; --surface:#201820; --surface-2:#2D222C;
+    --ink:#F3E8EF; --ink-2:#C4AEBE; --ink-3:#95808F;
+    --line:#372936; --line-strong:#4C3A4A;
+    --accent:#E8A3D2; --accent-soft:#3A2036; --accent-ink:#F2C4E4; --on-accent:#1B1019;
+    --calm:#F0929F; --calm-soft:#3A2029;
+    --cardio:#E5B76B; --cardio-soft:#352712;
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -18px rgba(0,0,0,.85);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0E1513; --surface:#161F1C; --surface-2:#1F2A26;
-  --ink:#E8EFEC; --ink-2:#A9B8B3; --ink-3:#7C8B86;
-  --line:#2A3733; --line-strong:#3A4A45;
-  --accent:#5FCBB0; --accent-soft:#12332C; --accent-ink:#8FE0CA; --on-accent:#0B1613;
-  --calm:#E093AB; --calm-soft:#331E26;
-  --cardio:#E0AC5E; --cardio-soft:#33270F;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  --ground:#161015; --surface:#201820; --surface-2:#2D222C;
+  --ink:#F3E8EF; --ink-2:#C4AEBE; --ink-3:#95808F;
+  --line:#372936; --line-strong:#4C3A4A;
+  --accent:#E8A3D2; --accent-soft:#3A2036; --accent-ink:#F2C4E4; --on-accent:#1B1019;
+  --calm:#F0929F; --calm-soft:#3A2029;
+  --cardio:#E5B76B; --cardio-soft:#352712;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -18px rgba(0,0,0,.85);
 }
 
 *{box-sizing:border-box}
@@ -161,6 +161,20 @@ ul.bullets b{color:var(--ink);font-weight:600}
 .setchip{width:34px;height:32px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface);font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-3);display:grid;place-items:center;transition:.15s}
 .setchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
 .resting{border:1px dashed var(--line-strong);border-radius:9px;padding:5px 11px;font-size:12px;color:var(--ink-2)}
+
+/* alternativas de exercício */
+.altwrap{display:flex;flex-direction:column;gap:9px}
+.altbtn{align-self:flex-start;border:1px dashed var(--line-strong);border-radius:9px;padding:5px 11px;
+  font-size:12px;font-weight:600;color:var(--ink-3);display:inline-flex;align-items:center;gap:6px}
+.altbtn:hover{border-color:var(--accent);color:var(--accent-ink);border-style:solid}
+.altbtn.on{border-style:solid;border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.altbtn .swap{font-size:13px}
+.altlist{border-left:2px solid var(--accent-soft);padding-left:13px;display:flex;flex-direction:column;gap:9px}
+.altitem{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.altitem .an{width:19px;height:19px;flex:0 0 auto;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink);
+  display:grid;place-items:center;font-size:11px;font-weight:600}
+.altitem .at{font-size:13.5px;color:var(--ink-2);flex:1 1 180px}
+.altfoot{font-size:11.5px;color:var(--ink-3);line-height:1.45}
 
 /* registro de carga */
 .loadrow{display:flex;gap:7px;align-items:center;flex-wrap:wrap;background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
@@ -360,7 +374,7 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
         <h3>Regras fixas — endometriose</h3>
         <ul>
           <li><b>Zero exercício de assoalho pélvico.</b> Nada de Kegel, hipopressivo ou "contrai e segura".</li>
-          <li><b>Sem abdominal de flexão nem prancha longa.</b> Aumentam a pressão intra-abdominal e costumam piorar a dor pélvica.</li>
+          <li><b>Nenhum exercício de abdômen no plano.</b> Sem crunch, sem infra, sem prancha, sem bird-dog, sem prancha lateral — nada que force o abdômen. O core é trabalhado apenas de forma indireta, pela postura nos exercícios em pé.</li>
           <li><b>Sem manobra de Valsalva.</b> Expire na fase de força; se a carga só sobe prendendo o ar, ela está alta demais.</li>
           <li><b>Impacto só em dia bom.</b> Corrida, pular corda e agachamento com salto ficam fora da rotina fixa.</li>
           <li><b>Dor forte, cólica ou sangramento intenso = Sessão Calma.</b> Não é folga: é o treino daquele dia.</li>
@@ -630,48 +644,78 @@ textarea.f{resize:vertical;min-height:52px;line-height:1.45}
 
 /* ================= plano padrão ================= */
 var DEFAULT = {
+  planV:2,
   startW:64.0, goalW:58.0, height:1.65,
   workouts:[
   { id:"A", nome:"Inferiores A", foco:"Glúteos e posteriores", dur:"40 min + 15 de cardio", ex:[
-    {n:"Elevação pélvica com barra (hip thrust)", s:4, r:"10-12", d:75, obs:"Principal exercício da semana para glúteo. Empurre com o calcanhar e expire na subida — nunca prenda o ar no topo."},
-    {n:"Leg press 45° com pés altos", s:3, r:"10-12", d:75, obs:"Pés altos jogam o esforço para glúteo e posterior. O quadril não pode descolar do banco."},
-    {n:"Mesa flexora", s:3, r:"12-15", d:60, obs:"Desça em 3 segundos. O ganho está na fase de volta."},
-    {n:"Stiff com halteres", s:3, r:"10-12", d:60, obs:"Desça até sentir o alongamento atrás da coxa, sem arredondar a lombar. Comece leve."},
-    {n:"Abdução de quadril na máquina", s:3, r:"15-20", d:45, obs:"Tronco levemente à frente para pegar mais glúteo médio."}
+    {n:"Elevação pélvica com barra (hip thrust)", s:4, r:"10-12", d:75, obs:"Principal exercício da semana para glúteo. Empurre com o calcanhar e expire na subida — nunca prenda o ar no topo.",
+      alt:["Elevação pélvica no banco com halter sobre o quadril","Máquina de glúteo (glute drive)","Ponte de glúteo no solo com elástico acima dos joelhos"]},
+    {n:"Leg press 45° com pés altos", s:3, r:"10-12", d:75, obs:"Pés altos jogam o esforço para glúteo e posterior. O quadril não pode descolar do banco.",
+      alt:["Agachamento no Smith com os pés bem à frente","Leg press horizontal com pés altos","Afundo no Smith com passo longo"]},
+    {n:"Mesa flexora", s:3, r:"12-15", d:60, obs:"Desça em 3 segundos. O ganho está na fase de volta.",
+      alt:["Flexora sentada","Flexora em pé, uma perna por vez","Stiff com halteres em ritmo lento"]},
+    {n:"Stiff com halteres", s:3, r:"10-12", d:60, obs:"Desça até sentir o alongamento atrás da coxa, sem arredondar a lombar. Comece leve.",
+      alt:["Stiff com barra","Levantamento terra romeno no Smith","Extensão de quadril no banco romano, sem peso"]},
+    {n:"Abdução de quadril na máquina", s:3, r:"15-20", d:45, obs:"Tronco levemente à frente para pegar mais glúteo médio.",
+      alt:["Abdução no cabo com caneleira","Abdução deitada de lado com elástico (clam shell)","Caminhada lateral com mini band"]}
   ]},
   { id:"B", nome:"Superiores B", foco:"Costas e bíceps", dur:"40 min + 15 de cardio", ex:[
-    {n:"Puxada frontal pegada aberta", s:4, r:"10-12", d:75, obs:"Puxe com os cotovelos, não com as mãos. Peito aberto."},
-    {n:"Remada baixa pegada neutra", s:3, r:"10-12", d:75, obs:"Sente-se firme. Balançar o tronco faz a pressão abdominal subir."},
-    {n:"Pullover na polia alta", s:3, r:"12-15", d:60, obs:"Braços quase estendidos, movimento só de ombro."},
-    {n:"Rosca direta com barra W", s:3, r:"10-12", d:60, obs:"Cotovelo colado no tronco."},
-    {n:"Rosca martelo", s:3, r:"12", d:45, obs:"Pega neutra, sem balanço."},
-    {n:"Bird-dog (4 apoios)", s:2, r:"10 cada lado", d:30, obs:"Substitui a prancha: estabilidade sem aumentar a pressão intra-abdominal."}
+    {n:"Puxada frontal pegada aberta", s:4, r:"10-12", d:75, obs:"Puxe com os cotovelos, não com as mãos. Peito aberto.",
+      alt:["Puxada com triângulo (pegada neutra)","Barra fixa assistida (graviton)","Puxada unilateral na polia alta"]},
+    {n:"Remada baixa pegada neutra", s:3, r:"10-12", d:75, obs:"Sente-se firme e mantenha o tronco parado — balançar não acrescenta nada e sobrecarrega a lombar.",
+      alt:["Remada na máquina com apoio no peito","Remada cavalinho com apoio","Remada baixa com barra reta e pegada aberta"]},
+    {n:"Pullover na polia alta", s:3, r:"12-15", d:60, obs:"Braços quase estendidos, movimento só de ombro. Ótimo para aprender a sentir o dorsal.",
+      alt:["Pullover com halter deitada no banco","Pullover na máquina","Puxada com braços estendidos na corda"]},
+    {n:"Rosca direta com barra W", s:3, r:"10-12", d:60, obs:"Cotovelo colado no tronco.",
+      alt:["Rosca direta com halteres","Rosca na polia baixa","Rosca Scott na máquina"]},
+    {n:"Rosca martelo", s:3, r:"12", d:45, obs:"Pega neutra, sem balanço.",
+      alt:["Rosca martelo na corda (polia)","Rosca inversa com barra","Rosca alternada sentada no banco inclinado"]},
+    {n:"Crucifixo inverso na máquina", s:3, r:"15", d:45, obs:"Posterior de ombro e postura, sentada e apoiada. Segure 1 segundo na abertura.",
+      alt:["Crucifixo inverso com halteres, sentada no banco","Face pull na polia alta","Abertura com elástico à frente do corpo"]}
   ]},
   { id:"C", nome:"Inferiores C", foco:"Quadríceps e glúteo médio", dur:"40 min + 15 de cardio", ex:[
-    {n:"Agachamento goblet com halter", s:4, r:"8-12", d:75, obs:"Halter à frente é mais seguro que barra nas costas para quem começa e comprime menos o tronco."},
-    {n:"Afundo no Smith", s:3, r:"10 cada", d:75, obs:"Passo longo pega mais glúteo; passo curto, mais quadríceps."},
-    {n:"Cadeira extensora", s:3, r:"12-15", d:60, obs:"Segure 1 segundo no topo, sem travar o joelho."},
-    {n:"Cadeira abdutora", s:3, r:"15-20", d:45, obs:"Glúteo médio: dá o formato arredondado na lateral do quadril."},
-    {n:"Panturrilha sentada", s:3, r:"15-20", d:45, obs:"Pega o sóleo, que a versão em pé não alcança."}
+    {n:"Agachamento goblet com halter", s:4, r:"8-12", d:75, obs:"Halter à frente é mais seguro que barra nas costas para quem começa e comprime menos o tronco.",
+      alt:["Agachamento no Smith","Agachamento na máquina hack","Leg press 45° com pés na altura média"]},
+    {n:"Afundo no Smith", s:3, r:"10 cada", d:75, obs:"Passo longo pega mais glúteo; passo curto, mais quadríceps.",
+      alt:["Passada com halteres","Afundo estático com halteres","Subida no banco (step-up) com halteres leves"]},
+    {n:"Cadeira extensora", s:3, r:"12-15", d:60, obs:"Segure 1 segundo no topo, sem travar o joelho.",
+      alt:["Extensora unilateral","Leg press com pés baixos na plataforma","Agachamento na parede com bola nas costas"]},
+    {n:"Cadeira abdutora", s:3, r:"15-20", d:45, obs:"Glúteo médio: dá o formato arredondado na lateral do quadril.",
+      alt:["Abdução no cabo com caneleira","Caminhada lateral com mini band","Abdução deitada de lado"]},
+    {n:"Panturrilha sentada", s:3, r:"15-20", d:45, obs:"Pega o sóleo, que a versão em pé não alcança.",
+      alt:["Panturrilha em pé na máquina","Panturrilha no leg press","Panturrilha no step segurando halter"]}
   ]},
   { id:"D", nome:"Superiores D", foco:"Peito, ombros e tríceps", dur:"40 min + 15 de cardio", ex:[
-    {n:"Supino reto com halteres", s:4, r:"8-12", d:75, obs:"Amplitude maior e ombro mais livre que a barra."},
-    {n:"Desenvolvimento sentado com halteres", s:3, r:"10-12", d:75, obs:"Encosto a 80°. Expire ao empurrar."},
-    {n:"Crucifixo na máquina (peck deck)", s:3, r:"12-15", d:60, obs:"Cotovelos levemente flexionados e fixos."},
-    {n:"Elevação lateral", s:3, r:"12-15", d:45, obs:"Carga leve. Desenha o ombro e afina visualmente a cintura."},
-    {n:"Tríceps na corda", s:3, r:"12-15", d:45, obs:"Abra a corda no final do movimento."},
-    {n:"Face pull", s:2, r:"15", d:45, obs:"Corrige postura e protege o ombro. Não pule."}
+    {n:"Supino reto com halteres", s:4, r:"8-12", d:75, obs:"Amplitude maior e ombro mais livre que a barra.",
+      alt:["Supino reto na máquina","Supino inclinado com halteres","Supino no Smith com pegada média"]},
+    {n:"Desenvolvimento sentado com halteres", s:3, r:"10-12", d:75, obs:"Encosto a 80°. Expire ao empurrar.",
+      alt:["Desenvolvimento na máquina","Desenvolvimento no Smith sentada","Desenvolvimento Arnold com halteres leves"]},
+    {n:"Crucifixo na máquina (peck deck)", s:3, r:"12-15", d:60, obs:"Cotovelos levemente flexionados e fixos.",
+      alt:["Crucifixo com halteres no banco","Crossover na polia média","Supino reto na máquina com pegada fechada"]},
+    {n:"Elevação lateral", s:3, r:"12-15", d:45, obs:"Carga leve. Desenha o ombro e afina visualmente a cintura.",
+      alt:["Elevação lateral na polia, um braço por vez","Elevação lateral na máquina","Elevação lateral com elástico"]},
+    {n:"Tríceps na corda", s:3, r:"12-15", d:45, obs:"Abra a corda no final do movimento.",
+      alt:["Tríceps na barra reta da polia","Tríceps na máquina","Tríceps francês sentada com halter"]},
+    {n:"Face pull", s:2, r:"15", d:45, obs:"Corrige postura e protege o ombro do volume de empurrar. Não pule.",
+      alt:["Crucifixo inverso na máquina","Abertura com elástico","Remada alta na polia com pegada aberta"]}
   ]},
   { id:"E", nome:"Glúteos E", foco:"Glúteos, ombros e posterior de ombro", dur:"40 min + 15 de cardio", ex:[
-    {n:"Elevação pélvica com barra", s:3, r:"12-15", d:60, obs:"Repetição da segunda com carga menor e mais repetições."},
-    {n:"Cadeira abdutora", s:4, r:"15-20", d:45, obs:"Na última série, tire metade da carga e faça mais 15 repetições."},
-    {n:"Coice na polia baixa", s:3, r:"12-15 cada", d:45, obs:"Tronco firme, sem rodar o quadril."},
-    {n:"Mesa flexora", s:3, r:"12", d:60, obs:"Segundo estímulo de posterior na semana, mais leve."},
-    {n:"Elevação lateral", s:3, r:"12-15", d:45, obs:"Ombro largo afina a cintura mais que qualquer abdominal."},
-    {n:"Panturrilha em pé", s:3, r:"20", d:45, obs:"Última do dia, cadência lenta."}
+    {n:"Elevação pélvica com barra", s:3, r:"12-15", d:60, obs:"Repetição da segunda com carga menor e mais repetições.",
+      alt:["Elevação pélvica no banco com halter","Máquina de glúteo (glute drive)","Ponte de glúteo com elástico acima dos joelhos"]},
+    {n:"Cadeira abdutora", s:4, r:"15-20", d:45, obs:"Na última série, tire metade da carga e faça mais 15 repetições.",
+      alt:["Abdução no cabo","Mini band sentada, joelhos afastando","Abdução deitada de lado"]},
+    {n:"Coice na polia baixa", s:3, r:"12-15 cada", d:45, obs:"Tronco firme, sem rodar o quadril.",
+      alt:["Coice na máquina de glúteo","Coice em 4 apoios com caneleira","Extensão de quadril no banco romano, sem peso"]},
+    {n:"Mesa flexora", s:3, r:"12", d:60, obs:"Segundo estímulo de posterior na semana, mais leve.",
+      alt:["Flexora sentada","Flexora em pé","Stiff leve com halteres"]},
+    {n:"Elevação lateral", s:3, r:"12-15", d:45, obs:"Ombro largo afina a cintura visualmente.",
+      alt:["Elevação lateral na polia","Elevação lateral na máquina","Elevação lateral com elástico"]},
+    {n:"Panturrilha em pé", s:3, r:"20", d:45, obs:"Última do dia, cadência lenta.",
+      alt:["Panturrilha no leg press","Panturrilha sentada","Panturrilha no step segurando halter"]}
   ]},
   { id:"S", nome:"Sessão Calma", foco:"Dia de dor, cólica ou fluxo intenso", dur:"25 min", calm:true, ex:[
-    {n:"Caminhada leve, plana", s:1, r:"12-15 min", d:0, obs:"Ritmo de conversa. Movimento leve alivia dor pélvica melhor que ficar deitada."},
+    {n:"Caminhada leve, plana", s:1, r:"12-15 min", d:0, obs:"Ritmo de conversa. Movimento leve alivia dor pélvica melhor que ficar deitada.",
+      alt:["Esteira sem inclinação, ritmo lento","Elíptico bem leve","Caminhada ao ar livre no plano"]},
     {n:"Gato-camelo (cat-cow)", s:2, r:"10 ciclos", d:30, obs:"Lento, acompanhando a respiração."},
     {n:"Postura da criança com joelhos afastados", s:2, r:"45 s", d:30, obs:"Abre o quadril sem contrair nada da região pélvica."},
     {n:"Alongamento de psoas ajoelhado", s:2, r:"30 s cada", d:30, obs:"O psoas costuma estar encurtado e referir dor no baixo ventre."},
@@ -756,6 +800,13 @@ function normalize(s){
   ["week","cardio","targets","meals","habits"].forEach(function(k){
     if(!Array.isArray(s.plan[k]) || !s.plan[k].length) s.plan[k] = clone(DEFAULT[k]);
   });
+  // atualização de versão do plano: troca a lista de exercícios pela nova,
+  // preservando peso, metas, cargas (uid é derivado do nome), ciclo e histórico
+  if(s.plan.planV !== DEFAULT.planV){
+    s.plan.workouts = clone(DEFAULT.workouts);
+    s.plan.planV = DEFAULT.planV;
+  }
+  s.plan.workouts.forEach(function(w){ w.ex.forEach(function(e){ if(!Array.isArray(e.alt)) e.alt=[]; }); });
   if(typeof s.plan.startW!=="number") s.plan.startW = DEFAULT.startW;
   if(typeof s.plan.goalW!=="number") s.plan.goalW = DEFAULT.goalW;
   s.plan.height = DEFAULT.height;
@@ -865,6 +916,23 @@ function loadBlock(e){
   return box;
 }
 
+/* ---- alternativas (aparelho ocupado) ---- */
+var openAlt = {};
+function altBlock(e){
+  var alt = e.alt || [];
+  if(!alt.length) return "";
+  var open = !!openAlt[e.uid];
+  var head = '<button class="altbtn'+(open?" on":"")+'" data-act="toggleAlt" data-uid="'+esc(e.uid)+'" aria-expanded="'+open+'">'+
+    '<span class="swap">⇄</span> Aparelho ocupado? '+alt.length+' trocas'+'</button>';
+  if(!open) return '<div class="altwrap">'+head+'</div>';
+  return '<div class="altwrap">'+head+
+    '<div class="altlist">'+alt.map(function(a,i){
+      return '<div class="altitem"><span class="an mono">'+(i+1)+'</span><span class="at">'+esc(a)+'</span>'+ytLink(a)+'</div>';
+    }).join("")+
+    '<p class="altfoot">Mesma quantidade de séries e repetições do exercício original. Anote a carga normalmente — o peso da máquina substituta costuma ser diferente, então registre o que usou de fato.</p>'+
+    '</div></div>';
+}
+
 function curWorkout(){ return state.plan.workouts.filter(function(w){return w.id===state.workout})[0] || state.plan.workouts[0]; }
 function wIndex(){ var id=state.workout; for(var i=0;i<state.plan.workouts.length;i++) if(state.plan.workouts[i].id===id) return i; return 0; }
 function doneToday(){ return state.done[todayKey] || []; }
@@ -949,6 +1017,8 @@ function renderWorkout(){
             '<label>Descanso (s)<input class="f num" type="number" min="0" max="300" step="5" data-bind="workouts.'+i0+'.ex.'+i+'.d" value="'+e.d+'"></label>'+
           '</div>'+
           '<textarea class="f" data-bind="workouts.'+i0+'.ex.'+i+'.obs" placeholder="Observação de execução">'+esc(e.obs)+'</textarea>'+
+          '<label class="flabel" style="margin-top:2px">Trocas para aparelho ocupado — uma por linha</label>'+
+          '<textarea class="f" data-alt="workouts.'+i0+'.ex.'+i+'.alt" placeholder="Uma alternativa por linha">'+esc((e.alt||[]).join("\n"))+'</textarea>'+
           '<div class="etools">'+
             '<button class="btn sm" data-act="upEx" data-i="'+i+'" aria-label="Subir">↑</button>'+
             '<button class="btn sm" data-act="downEx" data-i="'+i+'" aria-label="Descer">↓</button>'+
@@ -998,7 +1068,8 @@ function renderWorkout(){
       '<div class="exspec">'+e.s+'× '+esc(e.r)+'</div></div>'+
       '<div class="sets">'+chips+(e.d>0?'<span class="resting mono">'+e.d+'s</span>':'')+ytLink(e.n)+'</div>'+
       loadBlock(e)+
-      '<p class="exnote">'+esc(e.obs)+'</p></div>';
+      '<p class="exnote">'+esc(e.obs)+'</p>'+
+      altBlock(e)+'</div>';
   }).join("");
 
   host.innerHTML = html;
@@ -1370,7 +1441,13 @@ document.addEventListener("click", function(e){
 
 /* edição: campos */
 document.addEventListener("input", function(e){
-  var el = e.target, path = el.getAttribute && el.getAttribute("data-bind");
+  var el = e.target;
+  var altPath = el.getAttribute && el.getAttribute("data-alt");
+  if(altPath){
+    setPath(altPath, el.value.split("\n").map(function(x){return x.trim()}).filter(Boolean));
+    save(); return;
+  }
+  var path = el.getAttribute && el.getAttribute("data-bind");
   if(!path) return;
   var v = el.value;
   if(el.type==="number"){ v = parseFloat(v); if(isNaN(v)) return; if(path.indexOf(".s")>0||path.indexOf(".d")>0) v = Math.round(v); }
@@ -1411,6 +1488,7 @@ document.addEventListener("click", function(e){
     return;
   }
   if(act==="histLoad"){ var u=b.dataset.uid; openHist[u]=!openHist[u]; renderWorkout(); return; }
+  if(act==="toggleAlt"){ var ua=b.dataset.uid; openAlt[ua]=!openAlt[ua]; renderWorkout(); return; }
   if(act==="delLoad"){
     var u2=b.dataset.uid;
     state.loads[u2] = (state.loads[u2]||[]).filter(function(x){ return x.d!==b.dataset.d; });
@@ -1419,7 +1497,7 @@ document.addEventListener("click", function(e){
     return;
   }
 
-  if(act==="addEx"){ ex.push({n:"Novo exercício", s:3, r:"10-12", d:60, obs:"", uid:"x"+Date.now().toString(36)}); save(); renderWorkout(); }
+  if(act==="addEx"){ ex.push({n:"Novo exercício", s:3, r:"10-12", d:60, obs:"", alt:[], uid:"x"+Date.now().toString(36)}); save(); renderWorkout(); }
   else if(act==="delEx"){ ex.splice(i,1); if(!ex.length) ex.push({n:"Novo exercício",s:3,r:"10-12",d:60,obs:"",uid:"x"+Date.now().toString(36)}); save(); renderWorkout(); }
   else if(act==="upEx" && i>0){ ex.splice(i-1,0,ex.splice(i,1)[0]); save(); renderWorkout(); }
   else if(act==="downEx" && i<ex.length-1){ ex.splice(i+1,0,ex.splice(i,1)[0]); save(); renderWorkout(); }

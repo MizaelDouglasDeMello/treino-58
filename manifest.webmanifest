@@ -1,0 +1,19 @@
+{
+  "name": "Treino 58",
+  "short_name": "Treino 58",
+  "description": "Plano de treino, cardio, nutrição, hábitos e registro de dor e ciclo, adaptado para endometriose.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1F3F2",
+  "theme_color": "#0F5C4E",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

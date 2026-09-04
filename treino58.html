@@ -814,9 +814,11 @@ function newProfile(nome, tipo, sub, seed){
   return { nome:nome, tipo:tipo, sub:sub, plan:clone(seed), sets:{}, habits:{}, done:{},
            loads:{}, cycle:{}, log:[], workout:seed.workouts[0].id, day:todayKey };
 }
+var migrated = false;
 function normalizeRoot(r){
   // formato antigo: um único perfil na raiz -> vira o perfil da Caroline
   if(r && (r.plan || r.log) && !r.profiles){
+    migrated = true;
     var old = r;
     r = { active:"carol", profiles:{
       carol: { nome:"Caroline", tipo:"endo",
@@ -833,6 +835,7 @@ function normalizeRoot(r){
   }
   if(!r.profiles.mizael){
     r.profiles.mizael = newProfile("Mizael","padrao","Perfil novo — monte seus treinos na aba Treinos", BLANK);
+    migrated = true;
   }
   if(!r.profiles[r.active]) r.active = "carol";
   Object.keys(r.profiles).forEach(function(k){ normalize(r.profiles[k], k==="carol"); });
@@ -1710,6 +1713,7 @@ normalizeRoot(lsGet());
 document.getElementById("dIn").value = todayKey;
 document.getElementById("cycDate").value = todayKey;
 applyProfile();
+if(migrated){ lsSet(root); migrated = false; }
 
 if(window.claude && typeof window.claude.use==="function"){
   window.claude.use("db").then(function(d){
